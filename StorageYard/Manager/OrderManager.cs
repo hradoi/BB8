@@ -40,6 +40,16 @@ namespace StorageYard.Manager
             }
         }
 
+        public Order CreateOrder(string name, bool insert = false, bool save = false)
+        {
+            Order o = Repo.Context.Orders.Create();
+            o.Name = name;
+            if (insert)
+            {
+                return Repo.Insert<Order>(o, save);
+            }
+            return o;
+        }
         public Menu Create(string name, bool insert = false, bool save = false)
         {
             Menu m = Repo.Context.Menus.Create();

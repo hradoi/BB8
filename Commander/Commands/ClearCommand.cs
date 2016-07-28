@@ -14,12 +14,13 @@ namespace Commander.Commands
 
         public CommandResult execute(Order context)
         {
-            
+            context.Items.Clear();
+            return new CommandResult("Order cleared.");
         }
 
         public void AddParameter(string value)
         {
-
+            Parameters.Add(value);
         }
     }
 }

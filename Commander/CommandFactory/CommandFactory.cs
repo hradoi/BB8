@@ -18,9 +18,9 @@ namespace Commander.CommandFactory
             string[] tokens = commandString.Split(' ');
             switch (tokens[0])
             {
-                case :
+                
             }
-
+            return null;
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using StorageYard.Data;
 using Commander.Interfaces;
+using StorageYard.Manager;
 
 namespace Commander.Commands
 {
@@ -14,12 +15,18 @@ namespace Commander.Commands
 
         public CommandResult execute(Order context)
         {
-            
+            Menu menu = OrderManager.Instance.SelectMenus().Where(one => one.Name.Contains(Parameters.First())).FirstOrDefault();
+            string result = "";
+            foreach(Item i in menu.Items.ToList())
+            {
+                result = result + "\n" + i.Name;
+            }
+            return new CommandResult(Parameters.First() + " menu :" + result);
         }
 
         public void AddParameter(string value)
         {
-
+            Parameters.Add(value);
         }
     }
 }

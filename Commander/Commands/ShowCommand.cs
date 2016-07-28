@@ -14,12 +14,24 @@ namespace Commander.Commands
 
         public CommandResult execute(Order context)
         {
-            
+            string result = "";
+
+            foreach (Item i in context.Items.ToList())
+            {
+                result = result + "\n" + i.Name;
+            }
+
+            if (string.IsNullOrEmpty(result))
+            {
+                result = "Your order is empty.";
+            }
+
+            return new CommandResult(result);
         }
 
         public void AddParameter(string value)
         {
-
+            Parameters.Add(value);
         }
     }
 }

@@ -1,7 +1,12 @@
 ﻿namespace Commander.Interfaces
 {
-    public interface CommandResult
+    public class CommandResult
     {
-        string ResultString { get; }
+        public string ResultString { get; private set; }
+
+        public CommandResult(string message)
+        {
+            ResultString = message;
+        }
     }
 }
