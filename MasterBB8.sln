@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorageYard", "StorageYard\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commander", "Commander\Commander.csproj", "{E837B274-509F-4BD2-95A4-F0E07DE46026}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crawler", "Crawler\Crawler.csproj", "{B9F07192-9708-44C7-8286-DC4D0CB7FE32}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{E837B274-509F-4BD2-95A4-F0E07DE46026}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E837B274-509F-4BD2-95A4-F0E07DE46026}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E837B274-509F-4BD2-95A4-F0E07DE46026}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9F07192-9708-44C7-8286-DC4D0CB7FE32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9F07192-9708-44C7-8286-DC4D0CB7FE32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9F07192-9708-44C7-8286-DC4D0CB7FE32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9F07192-9708-44C7-8286-DC4D0CB7FE32}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

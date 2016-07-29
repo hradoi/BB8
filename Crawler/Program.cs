@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Crawler.Interface;
+using Crawler.Stores;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +12,8 @@ namespace Crawler
     {
         static void Main(string[] args)
         {
+            Store c = new Sector();
+            c.UpdateDB();
         }
     }
 }
