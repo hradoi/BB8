@@ -16,7 +16,11 @@ namespace Crawler.Stores
     {
         public void UpdateDB()
         {
+<<<<<<< HEAD
             Menu p = OrderManager.Instance.Create("Sector Gurmand", true, true);
+=======
+            Menu p = OrderManager.Instance.Create("Sector", true, true);
+>>>>>>> refs/remotes/origin/yellowcrawler
 
             List<string> titles = new List<string>();
             List<string> descriptions = new List<string>();
