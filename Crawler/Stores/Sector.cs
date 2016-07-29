@@ -16,7 +16,7 @@ namespace Crawler.Stores
     {
         public void UpdateDB()
         {
-            Menu p = OrderManager.Instance.Create("Yellow", true, true);
+            Menu p = OrderManager.Instance.Create("Sector", true, true);
 
             List<string> titles = new List<string>();
             List<string> descriptions = new List<string>();
@@ -60,7 +60,7 @@ namespace Crawler.Stores
                 Item i = OrderManager.Instance.Create(titles.ElementAt(e), Convert.ToDouble(prices.ElementAt(e)), descriptions.ElementAt(e), p, true);
             }
 
-            //OrderManager.Instance.Save();
+            OrderManager.Instance.Save();
         }
     }
 }

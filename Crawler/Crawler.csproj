@@ -41,6 +41,10 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -53,6 +57,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interface\Store.cs" />
+    <Compile Include="Models\Chef.cs" />
+    <Compile Include="Models\Details.cs" />
+    <Compile Include="Models\Dish.cs" />
+    <Compile Include="Models\Dishtag.cs" />
+    <Compile Include="incomingJson.cs" />
+    <Compile Include="Models\Intervalcapacity.cs" />
+    <Compile Include="Models\menuItem.cs" />
+    <Compile Include="Models\OutputMenu.cs" />
+    <Compile Include="Models\Picture.cs" />
+    <Compile Include="Models\Price.cs" />
+    <Compile Include="Models\Review.cs" />
+    <Compile Include="Models\Source.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Stores\Sector.cs" />
