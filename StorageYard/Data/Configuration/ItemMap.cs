@@ -12,7 +12,7 @@ namespace StorageYard.Data.Configuration
         public ItemMap()
         {
             Property(one => one.Name).HasMaxLength(128).IsVariableLength();
-            Property(one => one.Description).HasMaxLength(256).IsVariableLength().IsOptional();
+            Property(one => one.Description).HasMaxLength(1024).IsVariableLength().IsOptional();
 
             HasRequired(one => one.Menu).WithMany(one => one.Items).HasForeignKey(one => one.MenuId);
         }

@@ -15,7 +15,6 @@ namespace Commander.Commands
 
         public CommandResult execute(Order context)
         {
-
             if(Parameters.Count != 2)
             {
                 return null;
@@ -40,9 +39,9 @@ namespace Commander.Commands
                 }
                 return new CommandResult("I found: " + result);
             }
-            context.Items.Add(items.First());
+            context.Items.Add(items.FirstOrDefault());
 
-            return new CommandResult(items.First() + "was added to your order.");
+            return new CommandResult(items.FirstOrDefault() + "was added to your order.");
         }
 
         public void AddParameter(string value)

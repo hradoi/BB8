@@ -11,22 +11,22 @@ namespace Commander.Commands
 {
     public class MenuCommand : Command
     {
-        private List<string> Parameters = new List<string>();
+        private string target;
 
         public CommandResult execute(Order context)
         {
-            Menu menu = OrderManager.Instance.SelectMenus().Where(one => one.Name.Contains(Parameters.First())).FirstOrDefault();
+            Menu menu = OrderManager.Instance.SelectMenus().Where(one => one.Name.Contains(target)).FirstOrDefault();
             string result = "";
             foreach(Item i in menu.Items.ToList())
             {
-                result = result + "\n" + i.Name;
+                result = result + "\n\n" + i.Name;
             }
-            return new CommandResult(Parameters.First() + " menu :" + result);
+            return new CommandResult(target + " menu :" + result);
         }
 
         public void AddParameter(string value)
         {
-            Parameters.Add(value);
+            target = value;
         }
     }
 }

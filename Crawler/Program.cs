@@ -1,5 +1,6 @@
 ﻿using Crawler.Interface;
 using Crawler.Stores;
+using StorageYard.Manager;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +13,15 @@ namespace Crawler
     {
         static void Main(string[] args)
         {
-            Store c = new Sector();
-            c.UpdateDB();
+            try
+            {
+                Store c = new Sector();
+                c.UpdateDB();
+            }
+            finally
+            {
+                OrderManager.Instance.Dispose();
+            }
         }
     }
 }

@@ -42,8 +42,12 @@ namespace StorageYard.Manager
 
         public Order CreateOrder(string name, bool insert = false, bool save = false)
         {
-            Order o = Repo.Context.Orders.Create();
-            o.Name = name;
+            Order o = Repo.Context.Orders.Find(name);
+            if (o == null)
+            {
+                return Repo.Context.Orders.Create();
+            }
+            o.NameId = name;
             if (insert)
             {
                 return Repo.Insert<Order>(o, save);

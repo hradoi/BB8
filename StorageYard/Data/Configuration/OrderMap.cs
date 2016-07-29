@@ -11,7 +11,7 @@ namespace StorageYard.Data.Configuration
     {
         public OrderMap()
         {
-            Property(one => one.Name).HasMaxLength(64).IsVariableLength();
+            Property(one => one.NameId).HasMaxLength(64).IsVariableLength();
         }
     }
 }

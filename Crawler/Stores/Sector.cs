@@ -16,7 +16,7 @@ namespace Crawler.Stores
     {
         public void UpdateDB()
         {
-            Menu p = OrderManager.Instance.Create("Yellow", true, true);
+            Menu p = OrderManager.Instance.Create("Sector Gurmand", true, true);
 
             List<string> titles = new List<string>();
             List<string> descriptions = new List<string>();
@@ -57,10 +57,10 @@ namespace Crawler.Stores
             }
             for (int e = 0; e < titles.Count; e++)
             {
-                Item i = OrderManager.Instance.Create(titles.ElementAt(e), Convert.ToDouble(prices.ElementAt(e)), descriptions.ElementAt(e), p, true);
+                Item i = OrderManager.Instance.Create(titles.ElementAt(e), Convert.ToDouble(prices.ElementAt(e)), descriptions.ElementAt(e), p);
             }
 
-            //OrderManager.Instance.Save();
+            OrderManager.Instance.Save();
         }
     }
 }

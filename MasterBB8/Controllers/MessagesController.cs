@@ -7,6 +7,10 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using Microsoft.Bot.Connector;
 using Newtonsoft.Json;
+using StorageYard.Manager;
+using StorageYard.Data;
+using Commander.Interfaces;
+using Commander.CommandFactory;
 
 namespace MasterBB8
 {
@@ -22,11 +26,17 @@ namespace MasterBB8
             if (activity.Type == ActivityTypes.Message)
             {
                 ConnectorClient connector = new ConnectorClient(new Uri(activity.ServiceUrl));
-                // calculate something for us to return
-                int length = (activity.Text ?? string.Empty).Length;
-
-                // return our reply to the user
-                Activity reply = activity.CreateReply($"You sent {activity.Text} which was {length} characters long.");
+                Order o = OrderManager.Instance.CreateOrder(activity.Recipient.Name,true,true);
+                Command c = CommandFactory.BuildCommand(activity.Text);
+                Activity reply = null;
+                try
+                {
+                    reply = activity.CreateReply(c.execute(o).ResultString);
+                }
+                catch(Exception e)
+                {
+                    reply = activity.CreateReply(e.Message);
+                }
                 await connector.Conversations.ReplyToActivityAsync(reply);
             }
             else
