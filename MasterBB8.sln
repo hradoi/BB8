@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commander", "Commander\Comm
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crawler", "Crawler\Crawler.csproj", "{B9F07192-9708-44C7-8286-DC4D0CB7FE32}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuisIntegrationTesting", "LuisIntegrationTesting\LuisIntegrationTesting.csproj", "{0A8830ED-DC77-4849-8369-692092FF1EF0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{B9F07192-9708-44C7-8286-DC4D0CB7FE32}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9F07192-9708-44C7-8286-DC4D0CB7FE32}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9F07192-9708-44C7-8286-DC4D0CB7FE32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A8830ED-DC77-4849-8369-692092FF1EF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A8830ED-DC77-4849-8369-692092FF1EF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A8830ED-DC77-4849-8369-692092FF1EF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A8830ED-DC77-4849-8369-692092FF1EF0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
