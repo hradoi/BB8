@@ -14,6 +14,12 @@ namespace StorageYard.Data.Configuration
             Property(one => one.Name).HasMaxLength(128).IsVariableLength();
             Property(one => one.Description).HasMaxLength(1024).IsVariableLength().IsOptional();
 
+            HasMany<Order>(one => one.Orders).WithMany(one => one.Items).Map(cs =>
+            {
+                cs.MapLeftKey("ItemId");
+                cs.MapRightKey("OrderId");
+                cs.ToTable("ItemOrder");
+            });
             HasRequired(one => one.Menu).WithMany(one => one.Items).HasForeignKey(one => one.MenuId);
         }
     }

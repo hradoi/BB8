@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Routing;
 
-namespace Bot_Application2
+namespace BB8
 {
     public class WebApiApplication : System.Web.HttpApplication
     {

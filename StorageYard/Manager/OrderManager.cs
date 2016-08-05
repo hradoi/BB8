@@ -23,6 +23,12 @@ namespace StorageYard.Manager
             Repo.Dispose();
         }
 
+        public static void Close()
+        {
+            instance.Dispose();
+            instance = null;
+        }
+
         public static OrderManager Instance
         {
             get
@@ -45,12 +51,12 @@ namespace StorageYard.Manager
             Order o = Repo.Context.Orders.Find(name);
             if (o == null)
             {
-                return Repo.Context.Orders.Create();
-            }
-            o.NameId = name;
-            if (insert)
-            {
-                return Repo.Insert<Order>(o, save);
+                o = Repo.Context.Orders.Create();
+                o.OrderId = name;
+                if (insert)
+                {
+                    return Repo.Insert<Order>(o, save);
+                }
             }
             return o;
         }

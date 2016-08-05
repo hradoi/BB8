@@ -11,20 +11,27 @@ namespace Commander.Commands
 {
     public class MenuCommand : Command
     {
-        private string target;
+        private string target = null;
 
         public CommandResult execute(Order context)
         {
+            if (target == null)
+            {
+                CommandResult res = new CommandResult();
+                res.AddResult("From where?");
+                return res;
+            }
             Menu menu = OrderManager.Instance.SelectMenus().Where(one => one.Name.Contains(target)).FirstOrDefault();
-            string result = "";
+            CommandResult result = new CommandResult();
+            result.AddResult(target + "menu :");
             foreach(Item i in menu.Items.ToList())
             {
-                result = result + "\n\n" + i.Name;
+                result.AddResult(i.Name);
             }
-            return new CommandResult(target + " menu :" + result);
+            return result;
         }
 
-        public void AddParameter(string value)
+        public void SetTarget(string value)
         {
             target = value;
         }

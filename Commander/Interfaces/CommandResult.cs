@@ -1,12 +1,15 @@
-﻿namespace Commander.Interfaces
+﻿using System.Collections.Generic;
+
+namespace Commander.Interfaces
 {
     public class CommandResult
     {
-        public string ResultString { get; private set; }
-
-        public CommandResult(string message)
+        private List<string> results = new List<string>();
+        public List<string> Results { get { return results; } }
+        
+        public void AddResult(string text)
         {
-            ResultString = message;
+            results.Add(text);
         }
     }
 }

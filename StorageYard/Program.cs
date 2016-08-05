@@ -16,32 +16,10 @@ namespace StorageYard
     {
         static void Main(string[] args)
         {
-            try
+            using (var ctx = new Context())
             {
-                Menu menu = OrderManager.Instance.Create(Source.Yellow, true);
-                Item item = OrderManager.Instance.Create("Pizza", 0.78, "Nu mai e.", menu, true);
-                foreach (Menu m in OrderManager.Instance.SelectMenus().ToList())
-                {
-                    if (m.Items != null)
-                    {
-                        foreach (Item i in m.Items)
-                        {
-                            Console.WriteLine(i.MenuId);
-                        }
-
-                    }
-                    Console.WriteLine(m.MenuId);
-                }
+                ctx.Database.Delete();
             }
-            catch(Exception e)
-            {
-                Console.WriteLine(e);
-            }
-            finally
-            {
-                OrderManager.Instance.Dispose();
-            }
-            Console.ReadKey();
         }
     }
 }

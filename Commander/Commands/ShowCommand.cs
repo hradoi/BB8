@@ -10,28 +10,25 @@ namespace Commander.Commands
 {
     public class ShowCommand : Command
     {
-        private List<string> Parameters = new List<string>();
-
         public CommandResult execute(Order context)
         {
-            string result = "";
+            CommandResult result = new CommandResult();
+            result.AddResult("You have: ");
 
+            bool found = false;
             foreach (Item i in context.Items.ToList())
             {
-                result = result + "\n" + i.Name;
+                result.AddResult(i.Name);
+                found = true;
             }
 
-            if (string.IsNullOrEmpty(result))
+            if (!found)
             {
-                result = "Your order is empty.";
+                result = new CommandResult();
+                result.AddResult("Your order is empty.");
             }
 
-            return new CommandResult(result);
-        }
-
-        public void AddParameter(string value)
-        {
-            Parameters.Add(value);
+            return result;
         }
     }
 }

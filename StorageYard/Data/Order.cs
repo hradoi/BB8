@@ -12,7 +12,7 @@ namespace StorageYard.Data
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public string NameId { set; get; }
+        public string OrderId { set; get; }
 
         public virtual ICollection<Item> Items { get; set; }
     }

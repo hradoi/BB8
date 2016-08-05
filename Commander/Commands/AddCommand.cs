@@ -11,42 +11,61 @@ namespace Commander.Commands
 {
     public class AddCommand : Command
     {
-        private List<string> Parameters = new List<string>();
+        private List<string> items = new List<string>();
+        private string source = null;
 
         public CommandResult execute(Order context)
         {
-            if(Parameters.Count != 2)
-            {
-                return null;
-            }
+            CommandResult result = new CommandResult();
             
-            List<string> invalid = new List<string>();
-
-            var items = from i in OrderManager.Instance.SelectItems()
-                        where i.Menu.Name.Contains(Parameters.First()) && i.Name.Contains(Parameters.Last())
-                        select i;
-
-            if(items.Count() == 0)
+            if(items.Count == 0)
             {
-                return new CommandResult("Can't find anything with that name.");
+                result.AddResult("What items do you need?");
             }
-            if(items.Count() > 1)
+
+            if(source == null)
             {
-                string result = "";
-                foreach(Item i in items.ToList())
+                foreach(string str in items)
                 {
-                    result = result + "\n" + i.Name;
+                    var it = OrderManager.Instance.SelectItems().Where(i => i.Name.Contains(str)).FirstOrDefault();
+                    if (it != null)
+                    {
+                        context.Items.Add(it);
+                        result.AddResult(it.Name + " was added to your order.");
+                    }else
+                    {
+                        result.AddResult("Can't find: " + str);
+                    }
                 }
-                return new CommandResult("I found: " + result);
             }
-            context.Items.Add(items.FirstOrDefault());
-
-            return new CommandResult(items.FirstOrDefault() + "was added to your order.");
+            else
+            {
+                foreach (string str in items)
+                {
+                    var it = OrderManager.Instance.SelectItems().Where(i => i.Name.Contains(str)&&i.Menu.Name.Contains(source)).FirstOrDefault();
+                    if (it != null)
+                    {
+                        context.Items.Add(it);
+                        result.AddResult(it.Name +" from " +source+ " was added to your order.");
+                    }
+                    else
+                    {
+                        result.AddResult("Can't find: " + str + "from "+source);
+                    }
+                }
+            }
+            OrderManager.Instance.Save();
+            return result;
         }
 
-        public void AddParameter(string value)
+        public void AddItem(string item)
         {
-            Parameters.Add(value);
+            items.Add(item);
+        }
+
+        public void SetSource(string source)
+        {
+            this.source = source;
         }
     }
 }

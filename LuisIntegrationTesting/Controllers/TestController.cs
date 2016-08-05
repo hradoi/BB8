@@ -10,8 +10,11 @@ using Microsoft.Bot.Builder.Luis;
 using Microsoft.Bot.Builder.Luis.Models;
 using System.Collections.Generic;
 using System.IO;
+using Commander.Commands;
+using Commander.Interfaces;
+using StorageYard.Manager;
 
-namespace Bot_Application2
+namespace BB8
 {
     [BotAuthentication]
     public class MessagesController : ApiController
@@ -27,6 +30,8 @@ namespace Bot_Application2
             {
                 HandleSystemMessage(activity);
             }
+            OrderManager.Instance.Save();
+            OrderManager.Close();
             return new HttpResponseMessage(System.Net.HttpStatusCode.Accepted);
         }
 
@@ -45,40 +50,75 @@ namespace Bot_Application2
             [LuisIntent("order food")]
             public async Task OrderFood(IDialogContext context, LuisResult result)
             {
-                await context.PostAsync("Here is what I'm going to search for:");
+                AddCommand command = new AddCommand();
                 var entities = new List<EntityRecommendation>(result.Entities);
                 foreach (var entity in entities)
-                    await context.PostAsync($"{entity.Entity} of type {entity.Type}");
+                {
+                    if(entity.Type == "item")
+                    {
+                        command.AddItem(entity.Entity);
+                    } else if(entity.Type == "source")
+                    {
+                        command.SetSource(entity.Entity);
+                    }
+                }
+                CommandResult value = command.execute(OrderManager.Instance.CreateOrder("Vasile", true, true));
+                foreach(string s in value.Results)
+                {
+                    await context.PostAsync(s);
+                }
                 context.Wait(MessageReceived);
             }
 
             [LuisIntent("remove")]
             public async Task RemoveItem(IDialogContext context, LuisResult result)
             {
-                await context.PostAsync("Here is what I will remove:");
+                ClearCommand command = new ClearCommand();
                 var entities = new List<EntityRecommendation>(result.Entities);
                 foreach (var entity in entities)
-                    await context.PostAsync($"{entity.Entity} of type {entity.Type}");
+                {
+                    if (entity.Type == "item")
+                    {
+                        command.AddItem(entity.Entity);
+                    }
+                }
+                CommandResult value = command.execute(OrderManager.Instance.CreateOrder("Vasile", true, true));
+                foreach (string s in value.Results)
+                {
+                    await context.PostAsync(s);
+                }
                 context.Wait(MessageReceived);
             }
 
             [LuisIntent("show menu")]
             public async Task ShowMenu(IDialogContext context, LuisResult result)
             {
-                await context.PostAsync("Here is the menu I'll show:");
+                MenuCommand command = new MenuCommand();
                 var entities = new List<EntityRecommendation>(result.Entities);
                 foreach (var entity in entities)
-                    await context.PostAsync($"{entity.Entity} of type {entity.Type}");
+                {
+                    if (entity.Type == "source")
+                    {
+                        command.SetTarget(entity.Entity);
+                    }
+                }
+                CommandResult value = command.execute(OrderManager.Instance.CreateOrder("Vasile", true, true));
+                foreach (string s in value.Results)
+                {
+                    await context.PostAsync(s);
+                }
                 context.Wait(MessageReceived);
             }
 
             [LuisIntent("show order")]
             public async Task ShowOrder(IDialogContext context, LuisResult result)
             {
-                await context.PostAsync("Here are your entities:");
-                var entities = new List<EntityRecommendation>(result.Entities);
-                foreach (var entity in entities)
-                    await context.PostAsync($"{entity.Entity} of type {entity.Type}");
+                ShowCommand command = new ShowCommand();
+                CommandResult value = command.execute(OrderManager.Instance.CreateOrder("Vasile", true, true));
+                foreach (string s in value.Results)
+                {
+                    await context.PostAsync(s);
+                }
                 context.Wait(MessageReceived);
             }
         }

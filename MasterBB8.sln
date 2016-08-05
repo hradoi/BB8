@@ -3,15 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasterBB8", "MasterBB8\MasterBB8.csproj", "{A8BA1066-5695-4D71-ABB4-65E5A5E0C3D4}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorageYard", "StorageYard\StorageYard.csproj", "{78F722E1-0325-422A-A988-F924EE80C072}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commander", "Commander\Commander.csproj", "{E837B274-509F-4BD2-95A4-F0E07DE46026}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crawler", "Crawler\Crawler.csproj", "{B9F07192-9708-44C7-8286-DC4D0CB7FE32}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuisIntegrationTesting", "LuisIntegrationTesting\LuisIntegrationTesting.csproj", "{0A8830ED-DC77-4849-8369-692092FF1EF0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasterBait", "LuisIntegrationTesting\MasterBait.csproj", "{0A8830ED-DC77-4849-8369-692092FF1EF0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A8BA1066-5695-4D71-ABB4-65E5A5E0C3D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A8BA1066-5695-4D71-ABB4-65E5A5E0C3D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A8BA1066-5695-4D71-ABB4-65E5A5E0C3D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A8BA1066-5695-4D71-ABB4-65E5A5E0C3D4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{78F722E1-0325-422A-A988-F924EE80C072}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{78F722E1-0325-422A-A988-F924EE80C072}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{78F722E1-0325-422A-A988-F924EE80C072}.Release|Any CPU.ActiveCfg = Release|Any CPU

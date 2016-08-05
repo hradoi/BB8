@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 
-namespace Bot_Application2
+namespace BB8
 {
     public static class WebApiConfig
     {
