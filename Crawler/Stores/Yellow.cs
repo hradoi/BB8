@@ -23,7 +23,6 @@ namespace Crawler.Stores
             
             WebRequest request = WebRequest.Create("https://www.yellow.menu/yellowserver/api/core/menus/activeMenus?ReturnDetails=false");
             WebResponse response = request.GetResponse();
-            Console.WriteLine($"Connection status: {((HttpWebResponse)response).StatusDescription}");
             Stream dataStream = response.GetResponseStream();
             StreamReader reader = new StreamReader(dataStream);
 
@@ -40,7 +39,7 @@ namespace Crawler.Stores
                 };
                 Item i = OrderManager.Instance.Create(fi.Name, fi.Price, fi.Description, p, true);
             }
-            Console.ReadLine();
+         
         }
     }
 }

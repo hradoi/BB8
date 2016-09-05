@@ -36,7 +36,7 @@ namespace BB8
         }
 
 
-        [LuisModel("650bfbb2-eec4-4d51-a197-7a800d21f1a9", "405e762ea3b840e6a415b11731e26c08")]
+        [LuisModel("ed275ebc-5d05-4b98-82df-e0f7aba02230", "cd2b863a06624b63a27cd3bf81ce93aa")]
         [Serializable]
         public class EchoDialog : LuisDialog<object>
         {

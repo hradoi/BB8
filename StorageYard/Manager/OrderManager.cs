@@ -14,6 +14,7 @@ namespace StorageYard.Manager
         private static volatile OrderManager instance;
         private static object syncRoot = new Object();
         private GRepo<Context> Repo;
+
         private OrderManager() {
             Repo = new GRepo<Context>();
         }

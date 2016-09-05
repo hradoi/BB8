@@ -23,6 +23,11 @@ namespace Commander.Commands
             }
             Menu menu = OrderManager.Instance.SelectMenus().Where(one => one.Name.Contains(target)).FirstOrDefault();
             CommandResult result = new CommandResult();
+            if(menu == null)
+            {
+                result.AddResult("That restaurant is not available!");
+                return result;
+            }
             result.AddResult(target + "menu :");
             foreach(Item i in menu.Items.ToList())
             {

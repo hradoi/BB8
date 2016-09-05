@@ -15,8 +15,10 @@ namespace Crawler
         {
             try
             {
-                Store c = new Sector();
-                c.UpdateDB();
+                Store s1 = new Sector();
+                Store s2 = new Yellow();
+                s1.UpdateDB();
+                s2.UpdateDB();
             }
             finally
             {
